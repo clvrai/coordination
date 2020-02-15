@@ -1,0 +1,170 @@
+<mujoco model="ant">
+    <include file="./common/skybox.xml"/>
+    <include file="./common/visual.xml"/>
+    <include file="./common/materials.xml"/>
+    <include file="./common/camera.xml"/>
+  
+    <compiler angle="degree" coordinate="local" inertiafromgeom="true"/>
+  
+    <option integrator="RK4" timestep="0.01"/>
+
+    <size nconmax="200"/>
+  
+    <custom>
+        <numeric data="0.0 0.0 0.55 1.0 0.0 0.0 0.0 0.0 1.0 0.0 -1.0 0.0 -1.0 0.0 1.0" name="init_qpos"/>
+    </custom>
+  
+    <default>
+        <joint armature="1" damping="1" limited="true"/>
+        <!--<geom condim="3" density="5.0" friction="1 0.5 0.5" margin="0.01" material="self"/>
+             -->
+        <geom condim="3" density="50.0" friction="1 0.5 0.5" margin="0.01" material="self"/>
+        <motor ctrllimited="true" ctrlrange="-1 1"/>
+        <default class ="ground">
+            <geom material="grid" type="plane" contype="1" conaffinity="1"/>
+        </default>
+    </default>
+  
+    <worldbody>
+        <!--<light directional="true" cutoff="60" exponent="1" diffuse="0.8 0.8 0.8" specular=".1 .1 .1" pos="1 -1 1.5" dir="-1 1 -1.3"/>-->
+        <light pos="2.16 2 8" dir="0 -0.14834 -0.988936" castshadow="false" diffuse="0.9 0.9 0.9" />
+        <light pos="-4.84 -6 8" dir="0 -0.14834 -0.988936" castshadow="false" diffuse="0.9 0.9 0.9" />
+        <geom name="ground" class="ground" pos="0 0 0" size="20 20 1"/>
+  
+        <!-- ant1 -->
+        <body name="ant_1_torso" pos="0 0 0.5">
+          <body name="torso" pos="0 0 0"> </body>
+          <geom name="ant_1_torso_geom" pos="0 0 0" size="0.25" type="sphere"/>
+          <joint armature="0" damping="0" limited="false" margin="0.01" name="ant_1_root" pos="0 0 0" type="free"/>
+          <body name="ant_1_front_left_leg" pos="0 0 0">
+            <geom fromto="0.0 0.0 0.0 0.2 0.2 0.0" name="ant_1_aux_1_geom" size="0.08" type="capsule"/>
+            <body name="ant_1_aux_1" pos="0.2 0.2 0">
+              <joint axis="0 0 1" name="ant_1_hip_1" pos="0.0 0.0 0.0" range="-30 30" type="hinge"/>
+              <geom fromto="0.0 0.0 0.0 0.2 0.2 0.0" name="ant_1_left_leg_geom" size="0.08" type="capsule"/>
+              <body pos="0.2 0.2 0">
+                <joint axis="-1 1 0" name="ant_1_ankle_1" pos="0.0 0.0 0.0" range="30 70" type="hinge"/>
+                <geom fromto="0.0 0.0 0.0 0.4 0.4 0.0" name="ant_1_left_ankle_geom" size="0.08" type="capsule"/>
+              </body>
+            </body>
+          </body>
+          <body name="ant_1_front_right_leg" pos="0 0 0">
+            <geom fromto="0.0 0.0 0.0 -0.2 0.2 0.0" name="ant_1_aux_2_geom" size="0.08" type="capsule"/>
+            <body name="ant_1_aux_2" pos="-0.2 0.2 0">
+              <joint axis="0 0 1" name="ant_1_hip_2" pos="0.0 0.0 0.0" range="-30 30" type="hinge"/>
+              <geom fromto="0.0 0.0 0.0 -0.2 0.2 0.0" name="ant_1_right_leg_geom" size="0.08" type="capsule"/>
+              <body pos="-0.2 0.2 0">
+                <joint axis="1 1 0" name="ant_1_ankle_2" pos="0.0 0.0 0.0" range="-70 -30" type="hinge"/>
+                <geom fromto="0.0 0.0 0.0 -0.4 0.4 0.0" name="ant_1_right_ankle_geom" size="0.08" type="capsule"/>
+              </body>
+            </body>
+          </body>
+          <body name="ant_1_back_leg" pos="0 0 0">
+            <geom fromto="0.0 0.0 0.0 -0.2 -0.2 0.0" name="ant_1_aux_3_geom" size="0.08" type="capsule"/>
+            <body name="ant_1_aux_3" pos="-0.2 -0.2 0">
+              <joint axis="0 0 1" name="ant_1_hip_3" pos="0.0 0.0 0.0" range="-30 30" type="hinge"/>
+              <geom fromto="0.0 0.0 0.0 -0.2 -0.2 0.0" name="ant_1_back_leg_geom" size="0.08" type="capsule"/>
+              <body pos="-0.2 -0.2 0">
+                <joint axis="-1 1 0" name="ant_1_ankle_3" pos="0.0 0.0 0.0" range="-70 -30" type="hinge"/>
+                <geom fromto="0.0 0.0 0.0 -0.4 -0.4 0.0" name="ant_1_third_ankle_geom" size="0.08" type="capsule"/>
+              </body>
+            </body>
+          </body>
+          <body name="ant_1_right_back_leg" pos="0 0 0">
+            <geom fromto="0.0 0.0 0.0 0.2 -0.2 0.0" name="ant_1_aux_4_geom" size="0.08" type="capsule"/>
+            <body name="ant_1_aux_4" pos="0.2 -0.2 0">
+              <joint axis="0 0 1" name="ant_1_hip_4" pos="0.0 0.0 0.0" range="-30 30" type="hinge"/>
+              <geom fromto="0.0 0.0 0.0 0.2 -0.2 0.0" name="ant_1_rightback_leg_geom" size="0.08" type="capsule"/>
+              <body pos="0.2 -0.2 0">
+                <joint axis="1 1 0" name="ant_1_ankle_4" pos="0.0 0.0 0.0" range="30 70" type="hinge"/>
+                <geom fromto="0.0 0.0 0.0 0.4 -0.4 0.0" name="ant_1_fourth_ankle_geom" size="0.08" type="capsule"/>
+              </body>
+            </body>
+          </body>
+        </body>
+  
+        <!-- ant2 -->
+        <body name="ant_2_torso" pos="0 0 0.5">
+          <geom name="ant_2_torso_geom" pos="0 0 0" size="0.25" type="sphere"/>
+          <joint armature="0" damping="0" limited="false" margin="0.01" name="ant_2_root" pos="0 0 0" type="free"/>
+          <body name="ant_2_front_left_leg" pos="0 0 0">
+            <geom fromto="0.0 0.0 0.0 0.2 0.2 0.0" name="ant_2_aux_1_geom" size="0.08" type="capsule"/>
+            <body name="ant_2_aux_1" pos="0.2 0.2 0">
+              <joint axis="0 0 1" name="ant_2_hip_1" pos="0.0 0.0 0.0" range="-30 30" type="hinge"/>
+              <geom fromto="0.0 0.0 0.0 0.2 0.2 0.0" name="ant_2_left_leg_geom" size="0.08" type="capsule"/>
+              <body pos="0.2 0.2 0">
+                <joint axis="-1 1 0" name="ant_2_ankle_1" pos="0.0 0.0 0.0" range="30 70" type="hinge"/>
+                <geom fromto="0.0 0.0 0.0 0.4 0.4 0.0" name="ant_2_left_ankle_geom" size="0.08" type="capsule"/>
+              </body>
+            </body>
+          </body>
+          <body name="ant_2_front_right_leg" pos="0 0 0">
+            <geom fromto="0.0 0.0 0.0 -0.2 0.2 0.0" name="ant_2_aux_2_geom" size="0.08" type="capsule"/>
+            <body name="ant_2_aux_2" pos="-0.2 0.2 0">
+              <joint axis="0 0 1" name="ant_2_hip_2" pos="0.0 0.0 0.0" range="-30 30" type="hinge"/>
+              <geom fromto="0.0 0.0 0.0 -0.2 0.2 0.0" name="ant_2_right_leg_geom" size="0.08" type="capsule"/>
+              <body pos="-0.2 0.2 0">
+                <joint axis="1 1 0" name="ant_2_ankle_2" pos="0.0 0.0 0.0" range="-70 -30" type="hinge"/>
+                <geom fromto="0.0 0.0 0.0 -0.4 0.4 0.0" name="ant_2_right_ankle_geom" size="0.08" type="capsule"/>
+              </body>
+            </body>
+          </body>
+          <body name="ant_2_back_leg" pos="0 0 0">
+            <geom fromto="0.0 0.0 0.0 -0.2 -0.2 0.0" name="ant_2_aux_3_geom" size="0.08" type="capsule"/>
+            <body name="ant_2_aux_3" pos="-0.2 -0.2 0">
+              <joint axis="0 0 1" name="ant_2_hip_3" pos="0.0 0.0 0.0" range="-30 30" type="hinge"/>
+              <geom fromto="0.0 0.0 0.0 -0.2 -0.2 0.0" name="ant_2_back_leg_geom" size="0.08" type="capsule"/>
+              <body pos="-0.2 -0.2 0">
+                <joint axis="-1 1 0" name="ant_2_ankle_3" pos="0.0 0.0 0.0" range="-70 -30" type="hinge"/>
+                <geom fromto="0.0 0.0 0.0 -0.4 -0.4 0.0" name="ant_2_third_ankle_geom" size="0.08" type="capsule"/>
+              </body>
+            </body>
+          </body>
+          <body name="ant_2_right_back_leg" pos="0 0 0">
+            <geom fromto="0.0 0.0 0.0 0.2 -0.2 0.0" name="ant_2_aux_4_geom" size="0.08" type="capsule"/>
+            <body name="ant_2_aux_4" pos="0.2 -0.2 0">
+              <joint axis="0 0 1" name="ant_2_hip_4" pos="0.0 0.0 0.0" range="-30 30" type="hinge"/>
+              <geom fromto="0.0 0.0 0.0 0.2 -0.2 0.0" name="ant_2_rightback_leg_geom" size="0.08" type="capsule"/>
+              <body pos="0.2 -0.2 0">
+                <joint axis="1 1 0" name="ant_2_ankle_4" pos="0.0 0.0 0.0" range="30 70" type="hinge"/>
+                <geom fromto="0.0 0.0 0.0 0.4 -0.4 0.0" name="ant_2_fourth_ankle_geom" size="0.08" type="capsule"/>
+              </body>
+            </body>
+          </body>
+        </body>
+
+        <!-- box -->
+        <body name="box" pos="0 0 0.8" euler="0 0 0">
+            <geom name="box_geom1" pos="0 2 0" rgba="0.8 0.2 0.2 1" size="0.8 2.0 0.8" type="box" mass="5.0" friction="0.2 0.5 0.5" />
+            <geom name="box_geom2" pos="0 -2 0" rgba="0.8 0.2 0.2 1" size="0.8 2.0 0.8" type="box" mass="5.0" friction="0.2 0.5 0.5" />
+            <joint type="free" armature="0" damping="0" limited="false" stiffness="0"/>
+        </body>
+
+        <!-- goal -->
+        <body name="goal" pos="6.5 -3 0.8" euler="0 0 0">
+            <geom name="goal_geom1" pos="0 2 0" rgba="0.2 0.8 0.2 0.5" size="0.8 2.0 0.75" type="box" conaffinity="0" contype="0"/>
+            <geom name="goal_geom2" pos="0 -2 0" rgba="0.2 0.8 0.2 0.5" size="0.8 2.0 0.75" type="box" conaffinity="0" contype="0"/>
+        </body>
+  
+    </worldbody>
+  
+    <actuator>
+        <motor joint="ant_1_hip_4" gear="150"/>
+        <motor joint="ant_1_ankle_4" gear="150"/>
+        <motor joint="ant_1_hip_1" gear="150"/>
+        <motor joint="ant_1_ankle_1" gear="150"/>
+        <motor joint="ant_1_hip_2" gear="150"/>
+        <motor joint="ant_1_ankle_2" gear="150"/>
+        <motor joint="ant_1_hip_3" gear="150"/>
+        <motor joint="ant_1_ankle_3" gear="150"/>
+
+        <motor joint="ant_2_hip_4" gear="150"/>
+        <motor joint="ant_2_ankle_4" gear="150"/>
+        <motor joint="ant_2_hip_1" gear="150"/>
+        <motor joint="ant_2_ankle_1" gear="150"/>
+        <motor joint="ant_2_hip_2" gear="150"/>
+        <motor joint="ant_2_ankle_2" gear="150"/>
+        <motor joint="ant_2_hip_3" gear="150"/>
+        <motor joint="ant_2_ankle_3" gear="150"/>
+    </actuator>
+  
+</mujoco>

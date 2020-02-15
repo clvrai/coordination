@@ -1,0 +1,25 @@
+<mujoco model="two_jaco_pick">
+    <include file="./common/two_jaco_macros.xml" />
+    <worldbody>
+        <include file="./common/two_jaco_arena.xml" />
+        <body name="cube1" pos="0 0 0">
+            <inertial pos="0 0 0" mass="0.216" diaginertia="0.0001296 0.0001296 0.0001296" />
+            <joint name="cube1" type="free" armature="0" damping="0" limited="false" />
+            <geom name="cube1" size="0.02 0.06 0.06" type="box" group="1" friction="1 1 0.0001" material="light-wood" />
+            <site name="cube1" pos="0 0 0" size="0.002" material="light-wood" />
+        </body>
+        <body name="cube2" pos="0 0 0">
+            <inertial pos="0 0 0" mass="0.216" diaginertia="0.0001296 0.0001296 0.0001296" />
+            <joint name="cube2" type="free" armature="0" damping="0" limited="false" />
+            <geom name="cube2" size="0.02 0.06 0.06" type="box" group="1" friction="1 1 0.0001" material="light-wood" />
+            <site name="cube2" pos="0 0 0" size="0.002" material="light-wood" />
+        </body>
+        <body name="marker1" pos="0 0 0">
+            <geom name="marker1" size="0.02 0.02 0.02" type="sphere" contype="0" conaffinity="0" group="1" rgba="1 0 0 0" />
+        </body>
+        <body name="marker2" pos="0 0 0">
+            <geom name="marker2" size="0.02 0.02 0.02" type="sphere" contype="0" conaffinity="0" group="1" rgba="1 0 0 0" />
+        </body>
+    </worldbody>
+    <include file="./common/two_jaco_actuator.xml" />
+</mujoco>
