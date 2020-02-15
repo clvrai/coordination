@@ -27,7 +27,7 @@ class TwoJacoPickEnv(TwoJacoEnv):
             "success_reward_penalty": 10,
             "pick_reward": 500,
             "pick_height": 0.2,
-            "dist_reward": 100, # max_dist = 0.14
+            "dist_reward": 100,
             "ang_reward": 300, # angle of hand, max_angle = 1
             "grasp_reward": 50,
             "in_hand_reward": 0,
@@ -78,8 +78,8 @@ class TwoJacoPickEnv(TwoJacoEnv):
         left_gripper_center, right_gripper_center = self._get_gripper_centers()
 
         # dist reward
-        cube1_target = cube1_pos # + [0, 0, 0.1]
-        cube2_target = cube2_pos # + [0, 0, 0.1]
+        cube1_target = cube1_pos
+        cube2_target = cube2_pos
         dist_cube1 = np.linalg.norm(cube1_target - left_gripper_center)
         dist_cube2 = np.linalg.norm(cube2_target - right_gripper_center)
         if (not self.cube1_target_reached) and dist_cube1 < 0.04:

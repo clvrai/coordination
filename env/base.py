@@ -131,9 +131,6 @@ class BaseEnv(gym.Env):
         self._success = False
         self._fail = False
 
-        #with self.model.disable('actuation'):
-        #    self.forward()
-
     def step(self, action):
         self._before_step()
         if isinstance(action, list):

@@ -33,7 +33,6 @@
 
     <link rel="stylesheet" href="theme.css">
 
-
     <script>
         const classMap = {
             ul: 'browser-default'
@@ -57,7 +56,6 @@
             $.get( "content.md", (data) => {
                 const content_html = converter.makeHtml(data);
                 $("#markdown-body").html(content_html);
-                //hljs.initHighlighting();
             });
         })
 

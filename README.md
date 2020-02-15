@@ -140,13 +140,13 @@ python3 -m rl.main --env ant-forward-v0 --gpu 0 --prefix ant-2-left-n --env_args
 python3 -m rl.main --env two-jaco-bar-moving-v0 --gpu 0 --prefix RL --seed 1 --meta hard --meta_update_target LL --subdiv left_arm,left_hand,right_arm,right_hand,cube1,cube2-left_arm,right_arm --diayn False
 
 # RL with SBD
-python3 -m rl.main --env two-jaco-bar-moving-v0 --gpu 0 --prefix RL-SBD --seed 1 --meta hard --meta_update_target both --subdiv left_arm,left_hand,right_arm,right_hand,cube1,cube2-left_arm,right_arm
+python3 -m rl.main --env two-jaco-bar-moving-v0 --gpu 0 --prefix RL-SBD --seed 1 --meta hard --meta_update_target both --subdiv left_arm,left_hand,right_arm,right_hand,cube1,cube2-left_arm,right_arm --max_meta_len 1
 
 # MARL baseline
 python3 -m rl.main --env two-jaco-bar-moving-v0 --gpu 0 --prefix MARL --seed 1 --meta hard --meta_update_target LL --subdiv left_arm,left_hand,cube1-left_arm/right_arm,right_hand,cube2-right_arm --diayn False
 
 # MARL with SBD
-python3 -m rl.main --env two-jaco-bar-moving-v0 --gpu 0 --prefix MARL-SBD --seed 1 --meta hard --meta_update_target both --subdiv left_arm,left_hand,cube1-left_arm/right_arm,right_hand,cube2-right_arm
+python3 -m rl.main --env two-jaco-bar-moving-v0 --gpu 0 --prefix MARL-SBD --seed 1 --meta hard --meta_update_target both --subdiv left_arm,left_hand,cube1-left_arm/right_arm,right_hand,cube2-right_arm --max_meta_len 1
 
 # Modular without SBD
 python3 -m rl.main --env two-jaco-bar-moving-v0 --gpu 0 --prefix Modular --seed 1 --meta hard --subdiv left_arm,left_hand,cube1-left_arm/right_arm,right_hand,cube2-right_arm --subdiv_skills rl.two-jaco-pick-v0.left-n.1,rl.two-jaco-place-v0.left-side-n.1/rl.two-jaco-pick-v0.right-n.1,rl.two-jaco-place-v0.right-side-n.1 --max_meta_len 1 --diayn False
@@ -161,13 +161,13 @@ python3 -m rl.main --env two-jaco-bar-moving-v0 --gpu 0 --prefix ours --seed 1 -
 python3 -m rl.main --env two-jaco-pick-push-place-v0 --gpu 0 --prefix RL --seed 1 --meta hard --meta_update_target LL --subdiv left_arm,left_hand,right_arm,right_hand,cube1,cube2-left_arm,right_arm --diayn False
 
 # RL with SBD
-python3 -m rl.main --env two-jaco-pick-push-place-v0 --gpu 0 --prefix RL-SBD --seed 1 --meta hard --meta_update_target both --subdiv left_arm,left_hand,right_arm,right_hand,cube1,cube2-left_arm,right_arm
+python3 -m rl.main --env two-jaco-pick-push-place-v0 --gpu 0 --prefix RL-SBD --seed 1 --meta hard --meta_update_target both --subdiv left_arm,left_hand,right_arm,right_hand,cube1,cube2-left_arm,right_arm --max_meta_len 1
 
 # MARL baseline
 python3 -m rl.main --env two-jaco-pick-push-place-v0 --gpu 0 --prefix MARL --seed 1 --meta hard --meta_update_target LL --subdiv left_arm,left_hand,cube1-left_arm/right_arm,right_hand,cube2-right_arm --diayn False
 
 # MARL with SBD
-python3 -m rl.main --env two-jaco-pick-push-place-v0 --gpu 0 --prefix MARL-SBD --seed 1 --meta hard --meta_update_target both --subdiv left_arm,left_hand,cube1-left_arm/right_arm,right_hand,cube2-right_arm
+python3 -m rl.main --env two-jaco-pick-push-place-v0 --gpu 0 --prefix MARL-SBD --seed 1 --meta hard --meta_update_target both --subdiv left_arm,left_hand,cube1-left_arm/right_arm,right_hand,cube2-right_arm --max_meta_len 1
 
 # Modular without SBD
 python3 -m rl.main --env two-jaco-pick-push-place-v0 --gpu 0 --prefix Modular --seed 1 --meta hard --subdiv left_arm,left_hand,cube1-left_arm/right_arm,right_hand,cube2-right_arm --subdiv_skills rl.two-jaco-push-v0.left-n.1/rl.two-jaco-pick-v0.right-n.1,rl.two-jaco-place-v0.right-center-n.1 --max_meta_len 1 --diayn False
@@ -181,14 +181,14 @@ python3 -m rl.main --env two-jaco-pick-push-place-v0 --gpu 0 --prefix ours --see
 # RL baseline
 python3 -m rl.main --env ant-push-v0 --gpu 0 --prefix RL --seed 1 --meta hard --meta_update_target LL --subdiv ant_1,box_1,goal_1,ant_2,box_2,goal_2-ant_1,ant_2 --diayn False --max_global_step 4000000 --ckpt_interval 500
 
-# RL baseline
-python3 -m rl.main --env ant-push-v0 --gpu 0 --prefix RL-SBD --seed 1 --meta hard --meta_update_target both --subdiv ant_1,box_1,goal_1,ant_2,box_2,goal_2-ant_1,ant_2 --max_global_step 4000000 --ckpt_interval 500
+# RL with SBD
+python3 -m rl.main --env ant-push-v0 --gpu 0 --prefix RL-SBD --seed 1 --meta hard --meta_update_target both --subdiv ant_1,box_1,goal_1,ant_2,box_2,goal_2-ant_1,ant_2 --max_meta_len 5 --max_global_step 4000000 --ckpt_interval 500
 
 # MARL baseline
 python3 -m rl.main --env ant-push-v0 --gpu 0 --prefix MARL --seed 1 --meta hard --meta_update_target LL --subdiv ant_1,box_1,goal_1-ant_1/ant_2,box_2,goal_2-ant_2 --diayn False --max_global_step 4000000 --ckpt_interval 500
 
-# MARL baseline
-python3 -m rl.main --env ant-push-v0 --gpu 0 --prefix MARL-SBD --seed 1 --meta hard --meta_update_target both --subdiv ant_1,box_1,goal_1-ant_1/ant_2,box_2,goal_2-ant_2 --max_global_step 4000000 --ckpt_interval 500
+# MARL with SBD
+python3 -m rl.main --env ant-push-v0 --gpu 0 --prefix MARL-SBD --seed 1 --meta hard --meta_update_target both --subdiv ant_1,box_1,goal_1-ant_1/ant_2,box_2,goal_2-ant_2 --max_meta_len 5 --max_global_step 4000000 --ckpt_interval 500
 
 # Modular without SBD
 python3 -m rl.main --env ant-push-v0 --gpu 0 --prefix Modular --seed 1 --meta hard --subdiv ant_1,box_1-ant_1/ant_2,box_2-ant_2 --subdiv_skills rl.ant-forward-v0.ant-1-right-n.1,rl.ant-forward-v0.ant-1-left-n.1,rl.ant-forward-v0.ant-1-up-n.1,rl.ant-forward-v0.ant-1-down-n.1/rl.ant-forward-v0.ant-2-right-n.1,rl.ant-forward-v0.ant-2-left-n.1,rl.ant-forward-v0.ant-2-up-n.1,rl.ant-forward-v0.ant-2-down-n.1 --max_meta_len 5 --diayn False --max_global_step 1000000

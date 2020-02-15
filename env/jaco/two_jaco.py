@@ -92,7 +92,7 @@ class TwoJacoEnv(BaseEnv):
     @property
     def _init_qpos(self):
         jaco_qpos = [-0.11, 0.03, 0.15, 0.38, -0.12, 0., 0., 0., 0.]
-        return np.array(# [0., 0., 0., 0., 2.8, 0., 0., 0., 0.] + [0., 0., 0., 1., 2.8, 0., 0., 0., 0.] 
+        return np.array(
                     jaco_qpos + jaco_qpos \
                     + [0] * 3 + [1] + [0] * 3 \
                     + (([0] * 3 + [1] + [0] * 3) if self.model.nq > 25 else []))
