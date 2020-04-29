@@ -216,6 +216,7 @@ div#markdown-body h4 {
     padding-bottom: 10px;
     font-size: 1em;
 }
+
 div#markdown-body hr{
     border: 0;
     height: 1px;
@@ -271,7 +272,7 @@ div#markdown-body code {
     font-size: 0.7em;
 }
 
-div#markdown-body img {
+div#markdown-body img, div.slideshow_wrapper img {
     display: block;
     margin: 0 auto;
     max-width: 80%;
@@ -282,7 +283,7 @@ div#markdown-body p.video-title {
     text-align: center;
 }
 
-div#markdown-body figcaption {
+div#markdown-body figcaption, div.slideshow_wrapper figcaption {
     padding-top: 0;
     text-align: center;
     font-weight: 300;
@@ -304,13 +305,13 @@ span.env-name {
 }
 
 .slideshow_wrapper {
-    padding: 30px 0;
+    padding: 10px 0;
     display: block;
     width: 100%;
 }
 
 .slideshow img {
-    width: 100%; 
+    width: 100%;
 }
 
 .slick-list {
@@ -318,7 +319,7 @@ span.env-name {
 }
 
 .slick-dots li button:before {
-    font-size: 10px;
+    font-size: 20px;
 }
 
 .slick-active button {
