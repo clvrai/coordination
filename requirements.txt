@@ -17,4 +17,4 @@ seaborn==0.9.0
 Pillow<7
 torchvision==0.4.0
 wandb==0.8.9
-PyYAML==5.3
+PyYAML==5.4
