@@ -1,4 +1,4 @@
-numpy==1.18.1
+numpy==1.22.0
 colorlog==4.0.2
 gym==0.16.0
 h5py==2.9.0
